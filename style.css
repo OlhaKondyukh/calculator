@@ -13,6 +13,13 @@ html {
   margin: 0 auto;
 }
 
+.counting {
+  height: 20px;
+  text-align: right;
+  font-size: 20px;
+  margin: 10px 56px;
+}
+
 .calculator_content {
   padding: 20px 0;
   border: 2px solid rgb(117, 116, 116);
@@ -94,12 +101,18 @@ h1 {
 }
 
 .ac,
+.clean,
 .equal {
+  padding: 0;
+  width: 50px;
+  height: 50px;
+  border: 1px solid rgba(5, 3, 4, 0.279);
   box-shadow: 4px 4px 5px 2px rgba(84, 62, 83, 0.75);
   background-color: #d0aef4;
 }
 
 .ac:hover,
+.clean:hover,
 .equal:hover {
   background-color: rgb(140, 111, 172);
   transition: background-color 0.6s;
@@ -132,12 +145,8 @@ h1 {
   margin: 2px;
   padding: 0;
 }
-/* ac */
-.grid-item:nth-child(1) {
-  grid-column: 1 / span 2;
-}
 
 /* zero */
-.grid-item:nth-child(16) {
+.grid-item:nth-child(17) {
   grid-column: 1 / span 2;
 }
