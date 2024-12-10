@@ -10,11 +10,11 @@ let numbersArr = [[], []];
 let index = 0;
 let operatorValue = "";
 let display = [];
+let res;
 
 function calculations(event) {
   let first = Number(numbersArr[0].join(""));
   let second = Number(numbersArr[1].join(""));
-  let res;
 
   if (display.length < 3) {
     display.push(numbersArr[index]);
@@ -82,6 +82,10 @@ function cleanArr() {
 // add event listener for numbers
 numbers.forEach(function (number) {
   number.addEventListener("click", function (event) {
+    //
+    if (display == res) {
+      display.pop();
+    }
     numbersArr[index].push(event.target.value);
     if (index === 1) {
       //check if was tapped operator after adding second number
