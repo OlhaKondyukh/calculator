@@ -82,7 +82,7 @@ function cleanArr() {
 // add event listener for numbers
 numbers.forEach(function (number) {
   number.addEventListener("click", function (event) {
-    //
+    //if any number is pressed after the result is entered, the array is reset to zero
     if (display == res) {
       display.pop();
     }
