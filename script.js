@@ -1,9 +1,9 @@
-const outputContent = document.getElementById("output_content");
+const resultText = document.getElementById("result");
 const counting = document.getElementById("counting");
-const numbers = document.querySelectorAll(".number");
-const operators = document.querySelectorAll(".operator");
+const numbers = document.querySelectorAll(".grid-block__button-number");
+const operators = document.querySelectorAll(".grid-block__button-operator");
 const equal = document.getElementById("equal");
-const reset = document.getElementById("reset");
+const allClean = document.getElementById("allClean");
 const clean = document.getElementById("clean");
 
 let numbersArr = [[], []];
@@ -21,7 +21,7 @@ function calculations(event) {
   }
   counting.innerHTML = display.join("");
   console.log(numbersArr);
-  console.log(`display ${display}`);
+  console.log(`display: ${display}`);
   switch (operatorValue) {
     case "%":
       first = ((100 * second) / first).toFixed(2);
@@ -42,7 +42,7 @@ function calculations(event) {
     //first = [];
   }
   res = res.toString();
-  outputContent.innerHTML = `=${res}`;
+  resultText.innerHTML = `=${res}`;
   numbersArr[0] = [res];
   numbersArr[1] = [];
   operatorValue = "";
@@ -50,6 +50,8 @@ function calculations(event) {
     if (event.target.value === "=") {
       counting.innerHTML = res;
       display = [res];
+      console.log("при непосредственном нажатии =");
+      console.log(`display: ${display}`);
     }
   } catch {
     //
@@ -57,24 +59,24 @@ function calculations(event) {
 }
 
 //clean all previous calculations
-function resetCalc() {
+function cleanAllArr() {
   numbersArr = [[], []];
   index = 0;
   operatorValue = "";
-  outputContent.innerHTML = 0;
+  resultText.innerHTML = 0;
   counting.innerHTML = "";
   display = [];
 }
 
 //delete the last element from the number arr
-function cleanArr() {
+function cleanTheLastElementOfTheArr() {
   if (numbersArr !== undefined) {
     numbersArr[index].pop();
     display.pop();
     counting.innerHTML = display.join("");
-    outputContent.innerHTML = numbersArr[index].join("");
+    resultText.innerHTML = numbersArr[index].join("");
     if (numbersArr[index].length === 0) {
-      outputContent.innerHTML = 0;
+      resultText.innerHTML = 0;
     }
   }
 }
@@ -82,25 +84,48 @@ function cleanArr() {
 // add event listener for numbers
 numbers.forEach(function (number) {
   number.addEventListener("click", function (event) {
-    //if any number is pressed after the result is entered, the array is reset to zero
-    if (display == res) {
-      display.pop();
+    //if any number is pressed after the result is entered, the array is reset to zero length
+    if (display[0] == res && display[display.length - 1] !== operatorValue) {
+      cleanAllArr();
     }
-    numbersArr[index].push(event.target.value);
     if (index === 1) {
-      //check if was tapped operator after adding second number
+      //checking if was tapped operator after adding second number
       if (numbersArr[[0]].length !== 0 && operatorValue == "") {
         numbersArr[[0]] = [event.target.value];
         numbersArr[[1]] = [];
         index = 0;
       }
     }
-    display.push(event.target.value);
-    counting.innerHTML = display.join("");
-    outputContent.innerHTML = numbersArr[index].join("");
+    //checking that "." and "0" arу not a first element on the arrow
+    if (event.target.value === "0") {
+      if (numbersArr[0].length === 0 && numbersArr[1].length === 0) {
+        //nothing
+      } else {
+        numbersArr[index].push(event.target.value);
+        display.push(event.target.value);
+        counting.innerHTML = display.join("");
+        resultText.innerHTML = numbersArr[index].join("");
+      }
+    } else if (event.target.value === ".") {
+      if (numbersArr[0].length === 0 && numbersArr[1].length === 0) {
+        numbersArr[index].push("0");
+        numbersArr[index].push(event.target.value);
+        display.push("0");
+        display.push(event.target.value);
+        counting.innerHTML = display.join("");
+        resultText.innerHTML = numbersArr[index].join("");
+      } else {
+        //nothing
+      }
+    } else {
+      numbersArr[index].push(event.target.value);
+      display.push(event.target.value);
+      counting.innerHTML = display.join("");
+      resultText.innerHTML = numbersArr[index].join("");
+    }
 
     console.log(numbersArr);
-    console.log(`display ${display}`);
+    console.log(`display: ${display}`);
   });
 });
 
@@ -112,7 +137,18 @@ operators.forEach(function (operator) {
       calculations();
     }
     operatorValue = event.target.value;
-    display.push(operatorValue);
+    if (
+      display[display.length - 1] !== "+" &&
+      display[display.length - 1] !== "-" &&
+      display[display.length - 1] !== "*" &&
+      display[display.length - 1] !== "/" &&
+      display[display.length - 1] !== "%"
+    ) {
+      display.push(operatorValue);
+    } else {
+      display.pop();
+      display.push(operatorValue);
+    }
     counting.innerHTML = display.join("");
     index = 1;
 
@@ -125,7 +161,7 @@ operators.forEach(function (operator) {
 equal.addEventListener("click", calculations);
 
 // add event listener for reset button
-reset.addEventListener("click", resetCalc);
+allClean.addEventListener("click", cleanAllArr);
 
 // add event listener for clean button
-clean.addEventListener("click", cleanArr);
+clean.addEventListener("click", cleanTheLastElementOfTheArr);

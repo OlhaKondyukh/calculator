@@ -13,32 +13,33 @@ html {
   margin: 0 auto;
 }
 
-.counting {
+.calculator-block__counting-text {
   height: 20px;
   text-align: right;
   font-size: 20px;
   margin: 10px 56px;
+  overflow: hidden;
 }
 
-.calculator_content {
+.calculator-block {
   padding: 20px 0;
   border: 2px solid rgb(117, 116, 116);
   box-shadow: 10px 10px 15px 6px rgba(64, 22, 44, 0.53);
   background-color: #f4def7;
 }
 
-.title_block {
+.title-block {
   display: flex;
   justify-content: center;
   margin: 20px;
 }
 
-.img_unicorn {
+.title-block__img {
   max-height: 100px;
   width: 100px;
 }
 
-.output {
+.calculator-block__result {
   height: 49px;
   max-width: 218px;
   margin: 10px auto;
@@ -47,7 +48,7 @@ html {
   background-color: #fff;
 }
 
-.output_content {
+.calculator-block__result-text {
   margin: 0;
   text-align: right;
   font-size: 30px;
@@ -63,14 +64,14 @@ h1 {
   text-align: center;
 }
 
-.title {
+.title-block__title {
   background: -webkit-linear-gradient(90deg, #e78ee6 0%, #7de9df 80%);
   background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-left: 90px;
 }
 
-.grid-container {
+.grid-block {
   margin: 10px;
   width: 218px;
   display: grid;
@@ -78,7 +79,17 @@ h1 {
   margin: 0 auto;
 }
 
-.number {
+.grid-block__item {
+  margin: 2px;
+  padding: 0;
+}
+
+/* zero */
+.grid-block__item:nth-child(17) {
+  grid-column: 1 / span 2;
+}
+
+.grid-block__button-number {
   padding: 0;
   width: 50px;
   height: 50px;
@@ -88,21 +99,21 @@ h1 {
   transition: transform 4s;
 }
 
-.number:hover {
+.grid-block__button-number:hover {
   background-color: #c47bbe;
   transition: background-color 0.6s;
 }
 
-.big_button {
+.grid-block__button_size_big {
   padding: 0;
   width: 100%;
   height: 100%;
   border: 1px solid rgba(5, 3, 4, 0.279);
 }
 
-.ac,
-.clean,
-.equal {
+.grid-block__button-all-clean,
+.grid-block__button-clean,
+.grid-block__button-equal {
   padding: 0;
   width: 50px;
   height: 50px;
@@ -111,14 +122,14 @@ h1 {
   background-color: #d0aef4;
 }
 
-.ac:hover,
-.clean:hover,
-.equal:hover {
+.grid-block__button-all-clean:hover,
+.grid-block__button-clean:hover,
+.grid-block__button-equal:hover {
   background-color: rgb(140, 111, 172);
   transition: background-color 0.6s;
 }
 
-.operator {
+.grid-block__button-operator {
   padding: 0;
   width: 50px;
   height: 50px;
@@ -127,26 +138,7 @@ h1 {
   background-color: #a1edf4;
 }
 
-.operator:hover {
+.grid-block__button-operator:hover {
   background-color: #72b0b6;
   transition: background-color 0.6s;
-}
-
-.zero {
-  background-color: #f9b9f4;
-}
-
-.zero:hover {
-  background-color: #c47bbe;
-  transition: background-color 0.6s;
-}
-
-.grid-item {
-  margin: 2px;
-  padding: 0;
-}
-
-/* zero */
-.grid-item:nth-child(17) {
-  grid-column: 1 / span 2;
 }

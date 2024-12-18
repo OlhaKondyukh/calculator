@@ -11,76 +11,186 @@
   <body>
     <main>
       <div class="container">
-        <div class="title_block">
-          <h1 class="title">Calculator</h1>
-          <img src="images/unicorn.png" alt="" class="img_unicorn" />
+        <div class="title-block">
+          <h1 class="title-block__title">Calculator</h1>
+          <img class="title-block__img" src="images/unicorn.png" alt="" />
         </div>
-        <div class="calculator_content">
-          <p class="counting" id="counting"></p>
-          <div class="output">
-            <p class="output_content" id="output_content">0</p>
+        <div class="calculator-block">
+          <div class="calculator-block__counting">
+            <p class="calculator-block__counting-text" id="counting"></p>
           </div>
-          <div class="grid-container">
-            <div class="grid-item">
-              <button id="reset" class="ac">AC</button>
+          <div class="calculator-block__result">
+            <p class="calculator-block__result-text" id="result">0</p>
+          </div>
+          <div class="grid-block">
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-all-clean"
+                id="allClean"
+              >
+                AC
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="clean" class="clean">C</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-clean"
+                id="clean"
+              >
+                C
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="percent" class="button operator" value="%">%</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-operator"
+                id="percent"
+                value="%"
+              >
+                %
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="plus" class="button operator" value="+">+</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-operator"
+                id="plus"
+                value="+"
+              >
+                +
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="seven" class="button number" value="7">7</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="seven"
+                value="7"
+              >
+                7
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="eight" class="button number" value="8">8</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="eight"
+                value="8"
+              >
+                8
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="nine" class="button number" value="9">9</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="nine"
+                value="9"
+              >
+                9
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="minus" class="button operator" value="-">-</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-operator"
+                id="minus"
+                value="-"
+              >
+                -
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="four" class="button number" value="4">4</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="four"
+                value="4"
+              >
+                4
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="five" class="button number" value="5">5</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="five"
+                value="5"
+              >
+                5
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="six" class="button number" value="6">6</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="six"
+                value="6"
+              >
+                6
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="multiply" class="button operator" value="*">*</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-operator"
+                id="multiply"
+                value="*"
+              >
+                *
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="one" class="button number" value="1">1</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="one"
+                value="1"
+              >
+                1
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="two" class="button number" value="2">2</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="two"
+                value="2"
+              >
+                2
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="three" class="button number" value="3">3</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number"
+                id="three"
+                value="3"
+              >
+                3
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="divide" class="button operator" value="/">/</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-operator"
+                id="divide"
+                value="/"
+              >
+                /
+              </button>
             </div>
-            <div class="grid-item">
-              <button id="zero" class="zero big_button number" value="0">
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number grid-block__button_size_big"
+                id="zero"
+                value="0"
+              >
                 0
               </button>
             </div>
-            <div class="grid-item">
-              <button id="decimal" class="decimal button number" value=".">
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-number grid-block__button-decimal"
+                id="decimal"
+                value="."
+              >
                 .
               </button>
             </div>
-            <div class="grid-item">
-              <button id="equal" class="equal big_button" value="=">=</button>
+            <div class="grid-block__item">
+              <button
+                class="grid-block__button grid-block__button-equal grid-block__button_size_big"
+                id="equal"
+                value="="
+              >
+                =
+              </button>
             </div>
           </div>
         </div>
